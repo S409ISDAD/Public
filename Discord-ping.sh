@@ -12,7 +12,8 @@ fi
 
 # Install Python and pip (if not already installed)
 echo "Installing Python and pip..."
-sudo apt update && sudo apt install -y python3 python3-pip python3-venv || { echo "Failed to install Python or pip"; exit 1; }
+sudo apt update && sudo apt install --break-system-packages -y python3 python3-pip python3-venv || { echo "Failed to install Python or pip"; exit 1; }
+
 
 # Create a virtual environment
 python3 -m venv discord_bot_env
