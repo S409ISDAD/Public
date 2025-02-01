@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Check if the script was passed the URL and extract the token
-URL=$1
-TOKEN=$(echo $URL | sed -n 's/.*token=\([^&]*\).*/\1/p')
-
-# Check if token is empty
-if [ -z "$TOKEN" ]; then
-  echo "No token provided!"
-  exit 1
-fi
-
 # Install Python and pip
 echo "Installing Python and pip..."
 sudo apt update && sudo apt install -y python3 python3-pip || { echo "Failed to install Python or pip"; exit 1; }
@@ -18,11 +8,14 @@ sudo apt update && sudo apt install -y python3 python3-pip || { echo "Failed to 
 echo "Installing discord.py..."
 pip3 install discord.py || { echo "Failed to install discord.py"; exit 1; }
 
-# Create the bot script with the token
+# Ask for the bot token
+read -p "Enter your Discord bot token: " BOT_TOKEN
+
+# Create the bot script
 cat > bot.py <<EOF
 import discord
 
-TOKEN = "$TOKEN"
+TOKEN = "$BOT_TOKEN"
 
 class MyClient(discord.Client):
     async def on_ready(self):
