@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Define the bot token directly
-TOKEN="your-bot-token-here"
+# Prompt the user to enter the bot token
+read -p "Please enter your bot token: " TOKEN
 
 # Install Python and pip (if not already installed)
 echo "Installing Python and pip..."
@@ -17,7 +17,7 @@ source discord_bot_env/bin/activate
 echo "Installing discord.py..."
 pip install discord.py || { echo "Failed to install discord.py"; exit 1; }
 
-# Create the bot script with the token
+# Create the bot script with the entered token
 cat > bot.py <<EOF
 import discord
 
