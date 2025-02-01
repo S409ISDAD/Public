@@ -1,13 +1,18 @@
 #!/bin/bash
 
-# Check if the script was passed the URL and extract the token
-URL=$1
-TOKEN=$(echo $URL | sed -n 's/.*token=\([^&]*\).*/\1/p')
+# Ask the user to input the token directly
+echo "Please enter your Discord bot token:"
+read TOKEN
+
+# Check if token is empty
+if [ -z "$TOKEN" ]; then
+  echo "No token provided!"
+  exit 1
+fi
 
 # Install Python and pip (if not already installed)
 echo "Installing Python and pip..."
 sudo apt update && sudo apt install --break-system-packages -y python3 python3-pip python3-venv || { echo "Failed to install Python or pip"; exit 1; }
-
 
 # Create a virtual environment
 python3 -m venv discord_bot_env
