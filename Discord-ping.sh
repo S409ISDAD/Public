@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Ask the user to input the token directly
-echo "Please enter your Discord bot token:"
-read TOKEN
+# Define the bot token directly
+TOKEN="your-bot-token-here"
 
 # Check if token is empty
 if [ -z "$TOKEN" ]; then
