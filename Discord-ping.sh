@@ -3,12 +3,6 @@
 # Define the bot token directly
 TOKEN="your-bot-token-here"
 
-# Check if token is empty
-if [ -z "$TOKEN" ]; then
-  echo "No token provided!"
-  exit 1
-fi
-
 # Install Python and pip (if not already installed)
 echo "Installing Python and pip..."
 sudo apt update && sudo apt install --break-system-packages -y python3 python3-pip python3-venv || { echo "Failed to install Python or pip"; exit 1; }
