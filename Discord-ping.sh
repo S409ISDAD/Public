@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Extract token from the URL parameter
+# Extract the token from the query string passed as a parameter
 TOKEN=$(echo "$1" | sed -n 's/.*token=\([^&]*\).*/\1/p')
 
-# Check if token is empty
+# Check if the token is empty
 if [ -z "$TOKEN" ]; then
   echo "No token provided!"
   exit 1
